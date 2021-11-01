@@ -11,6 +11,7 @@ class Category(models.Model):
     
     class Meta:
         ordering = ('name',)
+        verbose_name_plural = "categories"
     
     def __str__(self):
         return self.name
@@ -41,20 +42,20 @@ class Product(models.Model):
             return 'http://127.0.0.1:8000' + self.image.url
         return ''
     
-    def get_thumnail(self):
-        if self.thumnail:
-            return 'http://127.0.0.1:8000' + self.image.thumnail.url
+    def get_thumbnail(self):
+        if self.thumbnail:
+            return 'http://127.0.0.1:8000' + self.image.thumbnail.url
         if self.image:
-            self.thumbnail = self.make_thumnail(self.image)
+            self.thumbnail = self.make_thumbnail(self.image)
             self.save()
             return 'http://127.0.0.1:8000' + self.thumbnail.url
         else:
             return ''
     
-    def make_thumnail(self, image, size=(300, 200)):
+    def make_thumbnail(self, image, size=(300, 200)):
         img = Image.open(image)
         img.convert('RGB')
-        img.thumnail(size)
+        img.thumbnail(size)
 
         thumb_io = BytesIO()
         img.save(thumb_io, 'JPEG', quality=85)
