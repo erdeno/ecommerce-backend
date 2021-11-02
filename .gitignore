@@ -1,6 +1,6 @@
 ### Python ###
 # Byte-compiled / optimized / DLL files
-leatherjackets/__pycache__/
+leatherjackets/__pycache__
 *.py[cod]
 *$py.class
 
@@ -71,11 +71,6 @@ venv/
 ENV/
 .env.local
 .env.*.local
-
-.DS_Store
-leatherjackets_frontend/node_modules
-leatherjackets_frontend/dist
-
 
 
 # Log files
